@@ -10,6 +10,7 @@ Module.register("shici", {
 		morningEndTime: 12,
 		afternoonStartTime: 12,
 		afternoonEndTime: 17,
+		zoom: 1.0,
 		text: {
 			"content": "Hello!",
 			"author": "",
@@ -74,10 +75,11 @@ Module.register("shici", {
 		let content = document.createElement("div");
 		content.append(document.createTextNode(self.config.text.content));
 		content.style.textAlign = "justify";
+		content.style.fontSize = ~~(100*self.config.zoom)+"%";
 		let by = document.createElement("div");
 		by.append(document.createTextNode(self.config.text.author?`\n－ ${self.config.text.author} 《${self.config.text.origin}》`:""));
 		by.style.textAlign = "right";
-		by.style.fontSize = "60%";
+		by.style.fontSize = ~~(60*self.config.zoom)+"%";
 		let wrapper = document.createElement("div");
 		wrapper.className = this.config.classes ? this.config.classes : "thin large bright";
 		wrapper.appendChild(content);
